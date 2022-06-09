@@ -6,6 +6,7 @@ use Auth;
 use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Hash;
 
 class JWTController extends Controller
