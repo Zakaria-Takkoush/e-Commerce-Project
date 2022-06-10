@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
 {
-    // Add Item
+    // Add Category
     public function addCategory(Request $request){
         $category = new Category;
         $category->name = $request->name;
@@ -19,4 +19,18 @@ class AdminCategoryController extends Controller
             "category" => $category
         ], 200);
     }
+
+    // Edit Category
+    public function updateCategory($id, Request $request){
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json([
+            "status" => "Success",
+            "category" => $category
+        ], 200);
+    }
+
 }
