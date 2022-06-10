@@ -27,7 +27,7 @@ Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory
 Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
 
 // User APIs
-Route::get('/landing_cats', [UserCategoryController::class, 'landingCategories']);
+Route::get('/landing_cats/{id?}', [UserCategoryController::class, 'landingCategories']);
 Route::get('/landing_items', [UserItemController::class, 'landingItems']);
 Route::get('/get_item', [UserItemController::class, 'getItem']);
 Route::get('/add_fav', [UserFavoriteController::class, 'addFavorite']);
