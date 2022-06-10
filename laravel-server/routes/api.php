@@ -30,6 +30,7 @@ Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory
 Route::get('/landing_cats/{id?}', [UserCategoryController::class, 'landingCategories']);
 Route::get('/landing_items', [UserItemController::class, 'landingItems']);
 Route::get('/get_item', [UserItemController::class, 'getItem']);
-Route::get('/add_fav', [UserFavoriteController::class, 'addFavorite']);
-Route::post('/get_favs', [UserFavoriteController::class, 'getFavorite']);
+Route::post('/add_fav', [UserFavoriteController::class, 'addFavorite']);
+Route::get('/get_favs', [UserFavoriteController::class, 'getFavorite']);
+Route::post('/remove_favs', [UserFavoriteController::class, 'removeFavorite']);
 
