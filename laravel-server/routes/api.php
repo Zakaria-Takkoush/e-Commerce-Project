@@ -20,8 +20,8 @@ Route::group(['middleware' => 'api'], function($router) {
 
 // Admin APIs
 Route::post('/add_item', [AdminItemController::class, 'addItem']);
-Route::post('/remove_item', [AdminItemController::class, 'removeItem']);
-Route::post('/update_item', [AdminItemController::class, 'updateItem']);
+Route::post('/remove_item/{id}', [AdminItemController::class, 'removeItem']);
+Route::post('/update_item/{id}', [AdminItemController::class, 'updateItem']);
 Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
 Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
 Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);

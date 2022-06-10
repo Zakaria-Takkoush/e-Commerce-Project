@@ -23,4 +23,19 @@ class AdminItemController extends Controller
         ], 200);
     }
 
+    // Edit Item
+    public function updateItem($id, Request $request){
+
+        $item = Item::find($id);
+        $item->name = $request->name;
+        $item->price = $request->price;
+        $item->cat_id = $request->cat_id;
+        $item->save();
+
+        return response()->json([
+            "status" => "Success",
+            "item" => $item
+        ], 200);
+    }
+
 }
