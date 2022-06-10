@@ -16,9 +16,18 @@ class UserItemController extends Controller
 
         return response()->json([
             "status" => "Success",
-            "items" => $items
+            "items in Category" => $items
         ], 200);
     }
 
-    // getItem
+    // Get a specific item
+    public function getItem($id){
+        // $item = Item::where("id", $id)->get();
+        $item = Item::find($id);
+
+        return response()->json([
+            "status" => "Success",
+            "item" => $item
+        ], 200);
+    }
 }

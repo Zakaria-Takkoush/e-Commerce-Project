@@ -16,6 +16,14 @@ Route::group(['middleware' => 'api'], function($router) {
     Route::post('/logout', [JWTController::class, 'logout']);
     Route::post('/refresh', [JWTController::class, 'refresh']);
     Route::post('/profile', [JWTController::class, 'profile']);
+
+    // User APIs
+    Route::get('/landing_cats', [UserCategoryController::class, 'landingCategories']);
+    Route::get('/landing_items/{id}', [UserItemController::class, 'landingItems']);
+    Route::get('/get_item/{id}', [UserItemController::class, 'getItem']);
+    Route::post('/add_fav', [UserFavoriteController::class, 'addFavorite']);
+    Route::get('/get_favs/{id}', [UserFavoriteController::class, 'getFavorites']);
+    Route::post('/remove_fav/{user_id}/{item_id}', [UserFavoriteController::class, 'removeFavorite']);
 });
 
 // Admin APIs
@@ -28,11 +36,5 @@ Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
 Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
 Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
 
-// User APIs
-Route::get('/landing_cats', [UserCategoryController::class, 'landingCategories']);
-Route::get('/landing_items/{id}', [UserItemController::class, 'landingItems']);
-Route::get('/get_item/{id}', [UserItemController::class, 'getItem']);
-Route::post('/add_fav', [UserFavoriteController::class, 'addFavorite']);
-Route::get('/get_favs/{id}', [UserFavoriteController::class, 'getFavorites']);
-Route::post('/remove_fav/{user_id}/{item_id}', [UserFavoriteController::class, 'removeFavorite']);
+
 
