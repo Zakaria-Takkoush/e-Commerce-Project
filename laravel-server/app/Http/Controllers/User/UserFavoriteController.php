@@ -31,4 +31,20 @@ class UserFavoriteController extends Controller
             "favorites" => $favs
         ], 200);
     }
+
+    //Remove an item from favorites
+    public function removeFavorite($user_id, $item_id){
+
+        // pass the user_id and item id to delete the favorite
+        $fav = Favorite::where("user_id", $user_id)
+                    ->where('item_id', $item_id)
+                    ->get();
+
+        $fav->each->delete();
+
+        return response()->json([
+            "status" => "Success",
+            "favorite removed" => $fav
+        ], 200);
+    }
 }
