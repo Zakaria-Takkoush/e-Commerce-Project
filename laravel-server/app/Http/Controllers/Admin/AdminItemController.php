@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\Category;
 use Faker\Calculator\Iban;
 use Illuminate\Http\Request;
 
@@ -50,4 +51,17 @@ class AdminItemController extends Controller
         ], 200);
     }
 
+    // Display Items
+    public function diaplayItems(){
+        // $items = Item::with("category")->get();
+        $items = Item::join("categories", "categories.id","=","items.cat_id")
+        ->get(["items.*", "categories.name as cat_name"]);
+
+        return response()->json([
+            "status" => "Success",
+            "items" => $items
+        ], 200);
+    }
 }
+
+    
