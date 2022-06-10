@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTController;
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminItemController;
+use App\Http\Controllers\User\UserCategoryController;
+use App\Http\Controllers\User\UserItemController;
+use App\Http\Controllers\User\UserFavoriteController;
 
 // Authentication Routs
 Route::group(['middleware' => 'api'], function($router) {
@@ -14,17 +19,17 @@ Route::group(['middleware' => 'api'], function($router) {
 });
 
 // Admin APIs
-Route::post('/add_item', [ItemController::class, 'addItem']);
-Route::post('/remove_item', [ItemController::class, 'removeItem']);
-Route::post('/update_item', [ItemController::class, 'updateItem']);
-Route::post('/add_cat', [CategoryController::class, 'addCategory']);
-Route::post('/remove_cat', [CategoryController::class, 'removeCategory']);
-Route::post('/update_cat', [CategoryController::class, 'updateCategory']);
+Route::post('/add_item', [AdminItemController::class, 'addItem']);
+Route::post('/remove_item', [AdminItemController::class, 'removeItem']);
+Route::post('/update_item', [AdminItemController::class, 'updateItem']);
+Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
+Route::post('/remove_cat', [AdminCategoryController::class, 'removeCategory']);
+Route::post('/update_cat', [AdminCategoryController::class, 'updateCategory']);
 
 // User APIs
-Route::get('/landing_cats', [CategoryController::class, 'landingCategories']);
-Route::get('/landing_items', [ItemController::class, 'landingItems']);
-Route::get('/get_item', [ItemController::class, 'getItem']);
-Route::get('/add_fav', [FavoriteController::class, 'addFavorite']);
-Route::post('/get_favs', [FavoriteCController::class, 'getFavorite']);
+Route::get('/landing_cats', [UserCategoryController::class, 'landingCategories']);
+Route::get('/landing_items', [UserItemController::class, 'landingItems']);
+Route::get('/get_item', [UserItemController::class, 'getItem']);
+Route::get('/add_fav', [UserFavoriteController::class, 'addFavorite']);
+Route::post('/get_favs', [UserFavoriteController::class, 'getFavorite']);
 
