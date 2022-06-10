@@ -23,7 +23,7 @@ Route::post('/add_item', [AdminItemController::class, 'addItem']);
 Route::post('/remove_item', [AdminItemController::class, 'removeItem']);
 Route::post('/update_item', [AdminItemController::class, 'updateItem']);
 Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
-Route::post('/remove_cat', [AdminCategoryController::class, 'removeCategory']);
+Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
 Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
 
 // User APIs

@@ -33,4 +33,14 @@ class AdminCategoryController extends Controller
         ], 200);
     }
 
+    // Remove Category
+    public function removeCategory($id, Request $request){
+
+        $category = Category::find($id);
+        $category->delete();
+
+        return response()->json([
+            "status" => "Success",
+        ], 200);
+    }
 }
