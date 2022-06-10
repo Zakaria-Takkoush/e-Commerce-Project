@@ -20,4 +20,15 @@ class UserFavoriteController extends Controller
             "favorite" => $fav
         ], 200);
     }
+
+    // Get All User Favorites
+    public function getFavorites($id) {
+        // Retroeve all favorites where the ID passed is the user ID
+        $favs = Favorite::where("user_id", $id)->get();
+
+        return response()->json([
+            "status" => "Success",
+            "favorites" => $favs
+        ], 200);
+    }
 }
