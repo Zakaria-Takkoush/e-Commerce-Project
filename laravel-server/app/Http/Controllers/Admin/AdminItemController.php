@@ -38,4 +38,16 @@ class AdminItemController extends Controller
         ], 200);
     }
 
+    // Delete Item
+    public function removeItem($id){
+
+        $item = Item::find($id);
+        $item->delete();
+
+        return response()->json([
+            "status" => "Success",
+            "item removed" => $item
+        ], 200);
+    }
+
 }
