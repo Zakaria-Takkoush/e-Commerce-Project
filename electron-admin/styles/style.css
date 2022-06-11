@@ -49,6 +49,7 @@ input{
 
 button {
     font-size: 15px;
+    font-weight: bold;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
