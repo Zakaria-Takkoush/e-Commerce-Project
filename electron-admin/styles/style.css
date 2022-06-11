@@ -10,6 +10,8 @@ body {
     color: white;
 }
 
+/* Login Page */
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -63,3 +65,35 @@ button:hover {
     background-color: lightgrey;
 }
 
+/* Control Panel  */
+
+table, th, td {
+    border: 1px solid;
+    font-size: 20px;
+  }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+th, td {
+    padding: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.categories, .items {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
