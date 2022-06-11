@@ -42,6 +42,7 @@ window.onclick = function (event) {
 }
 
 
+
 // Get All Categories
 
 let cat_row = ""
@@ -59,7 +60,6 @@ axios({
         const name = categories[i].name;
     
         //Apend each new item to the items table
-    
         cat_row += `
             <tr>
             <td>${id}</td>
@@ -70,6 +70,8 @@ axios({
         }
         document.getElementById("categories").innerHTML += cat_row;
 })
+
+
 
 // // Get all Items
 
@@ -103,6 +105,30 @@ axios({
             document.getElementById("items").innerHTML += item_row;
 })
 
+
+
+// Add a category
+let add_category = document.getElementById("add-category")
+
+add_category.addEventListener("click", function (event) {
+    let category_name = document.getElementById("category-name").value
+    event.preventDefault()
+
+        //Axios Function - Post
+
+        let data = new FormData();
+        data.append('name', category_name);
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/add_cat',
+            data: data,
+        })
+            .then(function (response) {
+                console.log(response.data);
+                location.reload();
+            }
+            )
+    })
 
     //     // Adding every item in the database as the below div 
     //         for (let i = 0; i < restaurants.length; i++) {
@@ -142,31 +168,6 @@ axios({
 // let cat_id = document.getElementById("cate").value
 // let desc = document.getElementById("description").value
 
-// add_resto.addEventListener("click", function (event) {
-//     event.preventDefault()
-
-
-
-//     //Axios Function - Post
-
-//     let data = new FormData();
-//     data.append('resto_name', resto_name);
-//     data.append('phone_number', phone_number);
-//     data.append('description', desc);
-//     data.append('cat_id', cat_id);
-//     data.append('city_id', city_id);
-//     axios({
-//         method: 'post',
-//         url: 'http://localhost/FoodWay-Backend/add_resto.php',
-//         data: data,
-//     })
-//         .then(function (response) {
-//             let result = response.data;
-//             console.log(result);
-//         }
-//         )
-
-// })
 
 
 // // This api call is for to get all items in the database and add them into the table of the admin
