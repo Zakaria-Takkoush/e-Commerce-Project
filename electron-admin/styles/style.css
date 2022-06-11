@@ -27,6 +27,7 @@ body {
     flex-direction: column;
     gap: 10px;
     text-align: center;
+    margin-top: 15px;
 }
 
 .login {
@@ -70,6 +71,7 @@ button:hover {
 .header {
     display: flex;
     gap: 100px;
+    margin-bottom: 10px;
 }
 
 table, th, td {
@@ -85,6 +87,11 @@ table {
 
 th, td {
     padding: 5px;
+}
+
+th {
+    background-color: white;
+    color: rgb(11, 11, 66);
 }
 
 .main-container {
@@ -147,3 +154,20 @@ select {
     padding: 5px;
     border-radius: 10px;
 }
+
+.categories, .items {
+    width: 90%;
+}
+
+#edit-category-btn, #edit-item-btn {
+    color: yellow;
+}
+
+#delete-category-btn, #delete-item-btn {
+    color: red;
+}
+
+#add-category-btn, #add-item-btn {
+    border: 1px solid lightgrey;
+}
+
