@@ -64,7 +64,7 @@ axios({
             <tr>
             <td>${id}</td>
             <td>${name}</td>
-            <td>Edit</td>
+            <td><a href="#" id="edit-category-btn"> Edit </a></td>
             <td>Delete</td>  
             </tr>`
         }
@@ -73,35 +73,35 @@ axios({
 
 // // Get all Items
 
-// let item_row = ""
-// axios({
-//     method: 'get',
-//     url: 'http://127.0.0.1:8000/api/display_items'
-// })
-//     .then(function (response) {
-//         let items = response.data;
-//         console.log(items);
+let item_row = ""
+axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/display_items'
+})
+    .then(function (response) {
+        let items = response.data.items;
+        console.log(items);
 
-//         for (let i = 0; i < items.length; i++) {
-//             const id = items[i].id;
-//             const name = items[i].name;
-//             const price = items[i].price;
-//             const category = items[i].cat_name;
+        for (let i = 0; i < items.length; i++) {
+            const id = items[i].id;
+            const name = items[i].name;
+            const price = items[i].price;
+            const category = items[i].cat_name;
         
-//             //Apend each new item to the items table
+            //Apend each new item to the items table
         
-//             item_row += `
-//                 <tr>
-//                 <td>${id}</td>
-//                 <td>${name}</td>
-//                 <td>${price}</td>
-//                 <td>${category}</td>
-//                 <td>Edit</td>
-//                 <td>Delete</td>  
-//                 </tr>`
-//             }
-//             document.getElementById("items").innerHTML += item_row;
-// })
+            item_row += `
+                <tr>
+                <td>${id}</td>
+                <td>${name}</td>
+                <td>${price}</td>
+                <td>${category}</td>
+                <td> <a href="#" id="edit-item-btn"> Edit </a></td> 
+                <td>Delete</td>  
+                </tr>`
+            }
+            document.getElementById("items").innerHTML += item_row;
+})
 
 
     //     // Adding every item in the database as the below div 
