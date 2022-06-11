@@ -185,19 +185,6 @@ add_item.addEventListener("click", function (event) {
     // )
 
 
-// let add_resto = document.getElementById("create");
-// let edit = document.getElementById("edit");
-// let delete_resto = document.getElementById("delete");
-// let all_restaurants;
-// // params: resto_name,phone_number,city_id,desc,cat
-
-// let resto_name = document.getElementById("resto_name").value
-// let phone_number = document.getElementById("phone_number").value
-// let city_id = document.getElementById("city").value
-// let cat_id = document.getElementById("cate").value
-// let desc = document.getElementById("description").value
-
-
 
 // // This api call is for to get all items in the database and add them into the table of the admin
 // axios({
@@ -232,20 +219,20 @@ add_item.addEventListener("click", function (event) {
 //         }
 //     )
 
-// // On click on the delete button of the resto, the resto will be deleted from the database using the delete resto api
-// delete_resto.addEventListener("click", deleteResto());
+// // On click on the delete button of the item, the item will be deleted from the database using the delete item api
+// delete_item.addEventListener("click", deleteitem());
 
-// function deleteResto(resto_id) {
-//     let data = new FormData();
-//     data.append('id', resto_id);
-//     axios({
-//         method: 'post',
-//         url: 'http://localhost/FoodWay-Backend/delete_resto.php',
-//         data: data,
-//     })
-//         .then(function (response) {
-//             let result = response.data;
-//             console.log(result);
-//         }
-//         )
-// }
+function deleteItem(item_id) {
+    let data = new FormData();
+    data.append('id', item_id);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/remove_item/' + item_id,
+        data: data,
+    })
+        .then(function (response) {
+            let result = response.data;
+            console.log(result);
+        }
+        )
+}
