@@ -21,9 +21,9 @@ add_category_btn.onclick = function () {
 edit_item_btn.onclick = function () {
     edit_item_popup.style.display = "block";
 }
-// edit_category_btn.onclick = function () {
-//     edit_category_popup.style.display = "block";
-// }
+edit_category_btn.onclick = function () {
+    edit_category_popup.style.display = "block";
+}
 
 // When the user clicks anywhere outside of the pop_up, close it
 window.onclick = function (event) {
@@ -36,9 +36,9 @@ window.onclick = function (event) {
   if (event.target == edit_item_popup) {
     edit_item_popup.style.display = "none";
   }
-//   if (event.target == edit_category_popup) {
-//     edit_category_popup.style.display = "none";
-//   }
+  if (event.target == edit_category_popup) {
+    edit_category_popup.style.display = "none";
+  }
 }
 
 

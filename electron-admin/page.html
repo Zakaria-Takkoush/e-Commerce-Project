@@ -33,7 +33,7 @@
                     <tr>
                         <td>666</td>
                         <td>Toys</td>    
-                        <td>Edit</td>
+                        <td><a href="#" id="edit-category-btn"> Edit </a></td>
                         <td>Delete</td>  
                     </tr>
                 </table>
@@ -63,7 +63,7 @@
                         <td>0.99</td>
                         <td>Sweets</td>    
                         <td> <a href="#" id="edit-item-btn"> Edit </a></td> 
-                        <td>Delete</td>  
+                        <td>Delete</td> 
                     </tr>
                 </table>
             </div>
@@ -139,6 +139,25 @@
 
         <div class="form_bottom">
             <button type="submit" id="edit-item">Submit Changes</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Edit Category pop-up-->
+
+<div class="pop_up" id="edit-category-popup">
+    <div class="add-edit">
+        <div class="form_top">
+            <h1>Edit Category</h1>
+        </div>
+
+        <div class="form_box">
+            <input type="text" placeholder="Category name..." id="category-name" required>
+        </div>
+
+        <div class="form_bottom">
+            <button type="submit" id="edit-category">Submit Changes</button>
         </div>
 
     </div>
