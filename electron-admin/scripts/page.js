@@ -1,3 +1,33 @@
+// Get All Categories
+
+let cat_row = ""
+axios({
+    method: 'get',
+    url: 'http://127.0.0.1:8000/api/display_cats'
+})
+.then(function (response) {
+    let categories = response.data;
+    console.log(categories);
+
+    for (let i = 0; i < categories.length; i++) {
+        const id = categories[i].id;
+        const name = categories[i].name;
+    
+        //Apend each new item to the items table
+    
+        cat_row += `
+            <tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>Edit</td>
+            <td>Delete</td>  
+            </tr>`
+        }
+        document.getElementById("items").innerHTML += cat_row;
+})
+
+// Get all Items
+
 let item_row = ""
 axios({
     method: 'get',
@@ -15,7 +45,7 @@ axios({
         
             //Apend each new item to the items table
         
-            table += `
+            item_row += `
                 <tr>
                 <td>${id}</td>
                 <td>${name}</td>
@@ -25,7 +55,7 @@ axios({
                 <td>Delete</td>  
                 </tr>`
             }
-            document.getElementById("items").innerHTML += table;
+            document.getElementById("items").innerHTML += item_row;
 })
 
 

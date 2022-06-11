@@ -67,6 +67,11 @@ button:hover {
 
 /* Control Panel  */
 
+.header {
+    display: flex;
+    gap: 100px;
+}
+
 table, th, td {
     border: 1px solid;
     font-size: 20px;
