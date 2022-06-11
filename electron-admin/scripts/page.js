@@ -15,9 +15,9 @@ var edit_category_btn = document.getElementById("edit-category-btn");
 add_item_btn.onclick = function () {
     add_item_popup.style.display = "block";
 }
-// add_category_btn.onclick = function () {
-//     add_category_popup.style.display = "block";
-// }
+add_category_btn.onclick = function () {
+    add_category_popup.style.display = "block";
+}
 // edit_item_btn.onclick = function () {
 //     edit_item_popup.style.display = "block";
 // }
@@ -30,9 +30,9 @@ window.onclick = function (event) {
   if (event.target == add_item_popup) {
     add_item_popup.style.display = "none";
   }
-//   if (event.target == add_category_popup) {
-//     add_category_popup.style.display = "none";
-//   }
+  if (event.target == add_category_popup) {
+    add_category_popup.style.display = "none";
+  }
 //   if (event.target == edit_item_popup) {
 //     edit_item_popup.style.display = "none";
 //   }
