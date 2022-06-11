@@ -130,6 +130,35 @@ add_category.addEventListener("click", function (event) {
             )
     })
 
+
+
+// Add an item
+let add_item = document.getElementById("add-item")
+
+add_item.addEventListener("click", function (event) {
+    let item_name = document.getElementById("item-name").value
+    let item_price = document.getElementById("item-price").value
+    let item_category = document.getElementById("item_category").value
+    event.preventDefault()
+
+        //Axios Function - Post
+
+        let data = new FormData();
+        data.append('name', item_name);
+        data.append('price', item_price);
+        data.append('cat_id', item_category);
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/add_item',
+            data: data,
+        })
+            .then(function (response) {
+                console.log(response.data);
+                location.reload();
+            }
+            )
+    })
+
     //     // Adding every item in the database as the below div 
     //         for (let i = 0; i < restaurants.length; i++) {
     //             table += `
