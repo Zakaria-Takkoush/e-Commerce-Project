@@ -62,7 +62,7 @@
                         <td>Candy</td>
                         <td>0.99</td>
                         <td>Sweets</td>    
-                        <td>Edit</td>
+                        <td> <a href="#" id="edit-item-btn"> Edit </a></td> 
                         <td>Delete</td>  
                     </tr>
                 </table>
@@ -112,6 +112,33 @@
 
         <div class="form_bottom">
             <button type="submit" id="add-category">Add Category</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Edit Item pop-up-->
+
+<div class="pop_up" id="edit-item-popup">
+    <div class="add-edit">
+        <div class="form_top">
+            <h1>Edit an Item</h1>
+        </div>
+
+        <div class="form_box">
+            <input type="text" placeholder="Item name..." id="item-name" required>
+            <input type="text" placeholder="Item price..." id="item-price" required>
+            <h3 for="category">Category</h3>
+            <select name="category" id="selected-rating">
+                <option disabled> SELECT CATEGORY </option>
+                <option value="">1</option>
+                <option value="">2</option>
+            </select>
+        </div>
+
+        <div class="form_bottom">
+            <button type="submit" id="edit-item">Submit Changes</button>
         </div>
 
     </div>
