@@ -44,4 +44,14 @@ class AdminCategoryController extends Controller
             "category removed" => $category
         ], 200);
     }
+
+    //Display Categories
+    public function displayCategories() {
+        $categories = Category::all();
+        
+        return response()->json([
+            "status" => "Success",
+            "categories" => $categories
+        ], 200);
+    }
 }

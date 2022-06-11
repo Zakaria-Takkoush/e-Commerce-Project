@@ -35,6 +35,7 @@ Route::get('/display_items', [AdminItemController::class, 'diaplayItems']);
 Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
 Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
 Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
+Route::get('/display_cats', [AdminCategoryController::class, 'displayCategories']);
 
 
 
