@@ -171,3 +171,8 @@ background-color: rgb(11, 11, 66);
 }
 
 
+/* Favorites Page */
+
+.item_category {
+    width: 20%;
+}
