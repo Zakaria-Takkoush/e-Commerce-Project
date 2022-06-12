@@ -174,15 +174,6 @@ add_item.addEventListener("click", function (event) {
     //             </tr>`;
     //         }
     //         document.getElementById("tbody").innerHTML = table;
-    //         edit.addEventListener("click", function () {
-    //             resto_name.value = "restaurants[idd].resto_name";
-    //             phone_number.value = "restaurants[idd].phone_number";
-    //             city_id.value = "restaurants[idd].city_id";
-    //             cat_id.value = "restaurants[idd].cat_id";
-    //             desc.value = "restaurants[idd].description";
-    //         })
-    //     }
-    // )
 
 
 
@@ -253,3 +244,27 @@ function deleteCategory(category_id) {
         }
         )
 }
+
+// Edit Item
+
+
+function editItem(item_id) {
+    let edit_item_name = document.getElementById("edit-item-name").value
+    let edit_item_price = document.getElementById("edit-item-price").value
+    let edit_item_category = document.getElementById("edit-item_category").value
+
+    let data = new FormData();
+    data.append('name', edit_item_name);
+    data.append('price', edit_item_price);
+    data.append('cat_id', edit_item_category);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/update_item/' + item_id,
+        data: data,
+    })
+        .then(function (response) {
+            console.log(response.data);
+        }
+)
+}
+
