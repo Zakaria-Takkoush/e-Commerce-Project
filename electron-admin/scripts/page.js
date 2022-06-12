@@ -44,6 +44,10 @@ window.onclick = function (event) {
 let item_ids = []   // Array containing items
 let category_ids = []   // Array containing categories
 
+// Get Categories to the select dropdown
+let category_options = document.getElementById("item_category")
+let option = ""
+
 // Get All Categories
 
 let cat_row = ""
@@ -68,10 +72,14 @@ axios({
             <td>${id}</td>
             <td>${name}</td>
             <td><a href="#" id="edit-category-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td>
-            <td><a href="#" id="delete-category-btn"><i class="fa-solid fa-trash"></i> Delete </a></td>  
+            <td><a href="#" onClick="deleteCategory(${id})" id="delete-category-btn"><i class="fa-solid fa-trash"></i> Delete </a></td>  
             </tr>`
+
+        option += `<option value="${id}">${name}</option>`
         }
         document.getElementById("categories").innerHTML += cat_row;
+        category_options.innerHTML += option;
+        
 })
 
 // // Get all Items
@@ -102,7 +110,7 @@ axios({
                 <td>${price}</td>
                 <td>${category}</td>
                 <td> <a href="#" id="edit-item-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td> 
-                <td> <a href="#" id="delete-item-btn"> <i class="fa-solid fa-trash"></i> Delete </a></td> 
+                <td> <a href="#" onClick="deleteItem(${id})" id="delete-item-btn"> <i class="fa-solid fa-trash"></i> Delete </a></td> 
                 </tr>`
             }
             document.getElementById("items").innerHTML += item_row;
@@ -156,11 +164,11 @@ add_item.addEventListener("click", function (event) {
             url: 'http://127.0.0.1:8000/api/add_item',
             data: data,
         })
-            .then(function (response) {
-                console.log(response.data);
-                location.reload();
-            }
-            )
+        .then(function (response) {
+            console.log(response.data);
+            location.reload();
+        }
+        )
     })
 
     //     // Adding every item in the database as the below div 
@@ -228,6 +236,7 @@ function deleteItem(item_id) {
         .then(function (response) {
             let result = response.data;
             console.log(result);
+            location.reload();
         }
         )
 }
@@ -245,6 +254,7 @@ function deleteCategory(category_id) {
         .then(function (response) {
             let result = response.data;
             console.log(result);
+            location.reload();
         }
         )
 }
@@ -291,3 +301,4 @@ function editCategory(category_id) {
     }
 )
 }
+
