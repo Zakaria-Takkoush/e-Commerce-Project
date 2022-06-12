@@ -52,10 +52,10 @@ axios({
 })
 .then(function (response) {
     let categories = response.data.categories;
-    console.log(categories);
+    // console.log(categories);
 
     for (let i = 0; i < categories.length; i++) {
-        console.log(categories[i]);
+        // console.log(categories[i]);
         const id = categories[i].id;
         const name = categories[i].name;
     
@@ -82,7 +82,7 @@ axios({
 })
     .then(function (response) {
         let items = response.data.items;
-        console.log(items);
+        // console.log(items);
 
         for (let i = 0; i < items.length; i++) {
             const id = items[i].id;
@@ -124,7 +124,7 @@ add_category.addEventListener("click", function (event) {
             data: data,
         })
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 location.reload();
             }
             )
@@ -223,12 +223,29 @@ add_item.addEventListener("click", function (event) {
 // delete_item.addEventListener("click", deleteitem());
 
 function deleteItem(item_id) {
-    let data = new FormData();
-    data.append('id', item_id);
+    // let data = new FormData();
+    // data.append('id', item_id);
     axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api/remove_item/' + item_id,
-        data: data,
+        // data: data,
+    })
+        .then(function (response) {
+            let result = response.data;
+            console.log(result);
+        }
+        )
+}
+
+// Delete Category
+
+function deleteCategory(category_id) {
+    // let data = new FormData();
+    // data.append('id', item_id);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/remove_cat/' + category_id,
+        // data: data,
     })
         .then(function (response) {
             let result = response.data;
