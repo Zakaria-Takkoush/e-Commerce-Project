@@ -178,6 +178,13 @@ add_item.addEventListener("click", function (event) {
 // delete_item.addEventListener("click", deleteitem());
 
 function deleteItem(item_id) {
+
+    // Alert the user
+    let message = confirm("Are you sure you want to delete this item");
+    if (message == false) {
+        return
+    }
+
     // let data = new FormData();
     // data.append('id', item_id);
     axios({
@@ -198,6 +205,10 @@ function deleteItem(item_id) {
 function deleteCategory(category_id) {
     // let data = new FormData();
     // data.append('id', item_id);
+    let message = confirm("Deleting a cetgory will delete ALL its items!\nAre you sure?");
+    if (message == false) {
+        return
+    }
     axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api/remove_cat/' + category_id,
