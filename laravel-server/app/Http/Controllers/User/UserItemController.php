@@ -16,7 +16,7 @@ class UserItemController extends Controller
 
         return response()->json([
             "status" => "Success",
-            "items in Category" => $items
+            "items_in_Category" => $items
         ], 200);
     }
 
