@@ -66,12 +66,17 @@ axios({
 
 const token = localStorage.getItem("token")
 
-axios.post("http://127.0.0.1:8000/api/profile", {
+axios.post("http://127.0.0.1:8000/api/profile", {}, {
   headers: {
-    'Authorization': `Bearer ${token}` 
+    'Authorization': `Bearer ` + token
   }
 }).then(function (response) {
-    console.log(response)
+    console.log(response.data)
+    let user_id = response.data.id
+    let f_name = response.data.first_name
+    let l_name = response.data.last_name
+    stored_id = localStorage.setItem("id" , user_id)
+    document.getElementById("welcome-user").innerText = `Welcome, ${f_name} ${l_name}`
 })
 
 // ----- Add an Item to favorites ----- //
