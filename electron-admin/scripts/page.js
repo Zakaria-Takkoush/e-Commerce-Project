@@ -128,6 +128,11 @@ add_category.addEventListener("click", function (event) {
     let category_name = document.getElementById("category-name").value
     event.preventDefault()
 
+    if (category_name == "") {
+        alert("Please fill out all fields")
+        return
+    }
+
         //Axios Function - Post
 
         let data = new FormData();
@@ -154,6 +159,11 @@ add_item.addEventListener("click", function (event) {
     let item_price = document.getElementById("item-price").value
     let item_category = document.getElementById("item_category").value
     event.preventDefault()
+
+    if (item_name == "" || item_price == "" || item_category == "") {
+        alert("Please fill out all fields")
+        return
+    }
 
         //Axios Function - Post
 
@@ -243,6 +253,11 @@ function editItem(item_id) {
         let edit_item_category = document.getElementById("edit-item_category").value
             event.preventDefault()
     
+            if (edit_item_name == "" || edit_item_price == "" || edit_item_category == "") {
+                alert("Please fill out all fields")
+                return
+            }
+
             //Axios Function - Post
     
             let data = new FormData();
@@ -280,6 +295,11 @@ function editCategory(category_id) {
         // define input fields
         let edit_category_name = document.getElementById("edit-category-name").value
             event.preventDefault()
+
+            if (edit_category_name == "") {
+                alert("Please fill out all fields")
+                return
+            }
     
             //Axios Function - Post
     
