@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminItemController;
 use App\Http\Controllers\User\UserCategoryController;
 use App\Http\Controllers\User\UserItemController;
 use App\Http\Controllers\User\UserFavoriteController;
+use GuzzleHttp\Middleware;
 
 // Authentication Routs
 Route::group(['middleware' => 'api'], function($router) {
@@ -27,15 +28,18 @@ Route::group(['middleware' => 'api'], function($router) {
 });
 
 // Admin APIs
-Route::post('/add_item', [AdminItemController::class, 'addItem']);
-Route::post('/remove_item/{id}', [AdminItemController::class, 'removeItem']);
-Route::post('/update_item/{id}', [AdminItemController::class, 'updateItem']);
-Route::get('/display_items', [AdminItemController::class, 'diaplayItems']);
+Route::group(["middleware" => "admin.access"], function(){
+    Route::post('/add_item', [AdminItemController::class, 'addItem']);
+    Route::post('/remove_item/{id}', [AdminItemController::class, 'removeItem']);
+    Route::post('/update_item/{id}', [AdminItemController::class, 'updateItem']);
+    Route::get('/display_items', [AdminItemController::class, 'diaplayItems']);
+    
+    Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
+    Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
+    Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
+    Route::get('/display_cats', [AdminCategoryController::class, 'displayCategories']);
+});
 
-Route::post('/add_cat', [AdminCategoryController::class, 'addCategory']);
-Route::post('/remove_cat/{id}', [AdminCategoryController::class, 'removeCategory']);
-Route::post('/update_cat/{id}', [AdminCategoryController::class, 'updateCategory']);
-Route::get('/display_cats', [AdminCategoryController::class, 'displayCategories']);
 
 
 
