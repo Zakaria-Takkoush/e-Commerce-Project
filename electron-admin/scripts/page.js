@@ -245,6 +245,7 @@ function deleteCategory(category_id) {
         )
 }
 
+
 // Edit Item
 
 
@@ -262,9 +263,27 @@ function editItem(item_id) {
         url: 'http://127.0.0.1:8000/api/update_item/' + item_id,
         data: data,
     })
-        .then(function (response) {
-            console.log(response.data);
-        }
+    .then(function (response) {
+        console.log(response.data);
+    }
 )
 }
 
+
+// Edit Category
+
+
+function editCategory(category_id) {
+    let edit_category_name = document.getElementById("edit-category-name").value
+    let data = new FormData();
+    data.append('name', edit_category_name);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/update_cat/' + category_id,
+        data: data,
+    })
+    .then(function (response) {
+        console.log(response.data);
+    }
+)
+}
