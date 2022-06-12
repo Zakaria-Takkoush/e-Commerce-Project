@@ -18,12 +18,12 @@ add_item_btn.onclick = function () {
 add_category_btn.onclick = function () {
     add_category_popup.style.display = "block";
 }
-edit_item_btn.onclick = function () {
-    edit_item_popup.style.display = "block";
-}
-edit_category_btn.onclick = function () {
-    edit_category_popup.style.display = "block";
-}
+// edit_item_btn.onclick = function () {
+//     edit_item_popup.style.display = "block";
+// }
+// edit_category_btn.onclick = function () {
+//     edit_category_popup.style.display = "block";
+// }
 
 // When the user clicks anywhere outside of the pop_up, close it
 window.onclick = function (event) {
@@ -41,7 +41,8 @@ window.onclick = function (event) {
   }
 }
 
-
+let item_ids = []   // Array containing items
+let category_ids = []   // Array containing categories
 
 // Get All Categories
 
@@ -58,20 +59,20 @@ axios({
         // console.log(categories[i]);
         const id = categories[i].id;
         const name = categories[i].name;
-    
+
+        category_ids.push(id) // Add each item to the items array
+
         //Apend each new item to the items table
         cat_row += `
             <tr>
             <td>${id}</td>
             <td>${name}</td>
-            <td><a href="#" id="edit-category-btn"> Edit </a></td>
-            <td>Delete</td>  
+            <td><a href="#" id="edit-category-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td>
+            <td><a href="#" id="delete-category-btn"><i class="fa-solid fa-trash"></i> Delete </a></td>  
             </tr>`
         }
         document.getElementById("categories").innerHTML += cat_row;
 })
-
-
 
 // // Get all Items
 
@@ -90,6 +91,8 @@ axios({
             const price = items[i].price;
             const category = items[i].cat_name;
         
+            item_ids.push(id) // Add each item to the items array
+
             //Apend each new item to the items table
         
             item_row += `
@@ -98,14 +101,15 @@ axios({
                 <td>${name}</td>
                 <td>${price}</td>
                 <td>${category}</td>
-                <td> <a href="#" id="edit-item-btn"> Edit </a></td> 
-                <td>Delete</td>  
+                <td> <a href="#" id="edit-item-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td> 
+                <td> <a href="#" id="delete-item-btn"> <i class="fa-solid fa-trash"></i> Delete </a></td> 
                 </tr>`
             }
             document.getElementById("items").innerHTML += item_row;
 })
 
-
+console.log(item_ids)
+console.log(category_ids)
 
 // Add a category
 let add_category = document.getElementById("add-category")
