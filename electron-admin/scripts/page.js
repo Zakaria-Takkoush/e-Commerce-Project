@@ -45,7 +45,8 @@ let item_ids = []   // Array containing items
 let category_ids = []   // Array containing categories
 
 // Get Categories to the select dropdown
-let category_options = document.getElementById("item_category")
+let category_options_add = document.getElementById("item_category")
+let category_options_edit = document.getElementById("edit-item_category")
 let option = ""
 
 // Get All Categories
@@ -74,12 +75,12 @@ axios({
             <td><a href="#" id="edit-category-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td>
             <td><a href="#" onClick="deleteCategory(${id})" id="delete-category-btn"><i class="fa-solid fa-trash"></i> Delete </a></td>  
             </tr>`
-
+            
         option += `<option value="${id}">${name}</option>`
         }
         document.getElementById("categories").innerHTML += cat_row;
-        category_options.innerHTML += option;
-        
+        category_options_add.innerHTML += option;
+        category_options_edit.innerHTML += option;
 })
 
 // // Get all Items
@@ -109,9 +110,10 @@ axios({
                 <td>${name}</td>
                 <td>${price}</td>
                 <td>${category}</td>
-                <td> <a href="#" id="edit-item-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td> 
+                <td> <a href="#" onClick="editItem(${id})" id="edit-item-btn"><i class="fa-regular fa-pen-to-square"></i> Edit </a></td> 
                 <td> <a href="#" onClick="deleteItem(${id})" id="delete-item-btn"> <i class="fa-solid fa-trash"></i> Delete </a></td> 
                 </tr>`
+                
             }
             document.getElementById("items").innerHTML += item_row;
 })
@@ -171,6 +173,106 @@ add_item.addEventListener("click", function (event) {
         )
     })
 
+
+// // On click on the delete button of the item, the item will be deleted from the database using the delete item api
+// delete_item.addEventListener("click", deleteitem());
+
+function deleteItem(item_id) {
+    // let data = new FormData();
+    // data.append('id', item_id);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/remove_item/' + item_id,
+        // data: data,
+    })
+        .then(function (response) {
+            let result = response.data;
+            console.log(result);
+            location.reload();
+        }
+        )
+}
+
+// Delete Category
+
+function deleteCategory(category_id) {
+    // let data = new FormData();
+    // data.append('id', item_id);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/remove_cat/' + category_id,
+        // data: data,
+    })
+        .then(function (response) {
+            let result = response.data;
+            console.log(result);
+            location.reload();
+        }
+        )
+}
+
+
+// Edit Item
+
+
+function editItem(item_id) {
+
+    // show pop-up edit item window
+    edit_item_popup.style.display = "block";
+
+    // get the submit edit button
+    let edit_item = document.getElementById("edit-item")
+
+    // add a click event to the submit edit button
+    edit_item.addEventListener("click", function (event) {
+
+        // define input fields
+        let edit_item_name = document.getElementById("edit-item-name").value
+        let edit_item_price = document.getElementById("edit-item-price").value
+        let edit_item_category = document.getElementById("edit-item_category").value
+            event.preventDefault()
+    
+            //Axios Function - Post
+    
+            let data = new FormData();
+            data.append('name', edit_item_name);
+            data.append('price', edit_item_price);
+            data.append('cat_id', edit_item_category);
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/update_item/' + item_id,
+                data: data,
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                location.reload();
+            }
+         )
+        })
+}
+
+
+// Edit Category
+
+
+function editCategory(category_id) {
+    let edit_category_name = document.getElementById("edit-category-name").value
+    let data = new FormData();
+    data.append('name', edit_category_name);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/update_cat/' + category_id,
+        data: data,
+    })
+    .then(function (response) {
+        console.log(response.data);
+    }
+)
+}
+
+
+
+
     //     // Adding every item in the database as the below div 
     //         for (let i = 0; i < restaurants.length; i++) {
     //             table += `
@@ -221,84 +323,3 @@ add_item.addEventListener("click", function (event) {
 //             })
 //         }
 //     )
-
-// // On click on the delete button of the item, the item will be deleted from the database using the delete item api
-// delete_item.addEventListener("click", deleteitem());
-
-function deleteItem(item_id) {
-    // let data = new FormData();
-    // data.append('id', item_id);
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/remove_item/' + item_id,
-        // data: data,
-    })
-        .then(function (response) {
-            let result = response.data;
-            console.log(result);
-            location.reload();
-        }
-        )
-}
-
-// Delete Category
-
-function deleteCategory(category_id) {
-    // let data = new FormData();
-    // data.append('id', item_id);
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/remove_cat/' + category_id,
-        // data: data,
-    })
-        .then(function (response) {
-            let result = response.data;
-            console.log(result);
-            location.reload();
-        }
-        )
-}
-
-
-// Edit Item
-
-
-function editItem(item_id) {
-    let edit_item_name = document.getElementById("edit-item-name").value
-    let edit_item_price = document.getElementById("edit-item-price").value
-    let edit_item_category = document.getElementById("edit-item_category").value
-
-    let data = new FormData();
-    data.append('name', edit_item_name);
-    data.append('price', edit_item_price);
-    data.append('cat_id', edit_item_category);
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/update_item/' + item_id,
-        data: data,
-    })
-    .then(function (response) {
-        console.log(response.data);
-    }
-)
-}
-
-
-// Edit Category
-
-
-function editCategory(category_id) {
-    let edit_category_name = document.getElementById("edit-category-name").value
-    let data = new FormData();
-    data.append('name', edit_category_name);
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/update_cat/' + category_id,
-        data: data,
-    })
-    .then(function (response) {
-        console.log(response.data);
-    }
-)
-}
-
