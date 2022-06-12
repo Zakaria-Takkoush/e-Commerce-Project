@@ -61,3 +61,18 @@ axios({
             document.getElementById("items").innerHTML += item_row;
 })
 }
+
+// Get the user profile
+
+const token = localStorage.getItem("token")
+
+axios.post("http://127.0.0.1:8000/api/profile", {
+  headers: {
+    'Authorization': `Bearer ${token}` 
+  }
+}).then(function (response) {
+    console.log(response)
+})
+
+// ----- Add an Item to favorites ----- //
+
