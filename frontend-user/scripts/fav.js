@@ -48,3 +48,25 @@ axios({
 
 })
 
+// ----- Remove Favorite ----- //
+
+function removeFav(item_id) {
+
+let data = new FormData();
+
+    data.append('user_id', user_id);
+    data.append('item_id', item_id);
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/remove_fav/' + user_id + "/" + item_id,
+        data: data,
+    })
+        .then(function (response) {
+            let result = response.data;
+            console.log(result);
+            location.reload();
+        }
+        )
+
+}
