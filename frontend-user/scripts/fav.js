@@ -64,8 +64,8 @@ let data = new FormData();
         data: data,
     })
         .then(function (response) {
-            let result = response.data;
-            console.log(result);
+            // let result = response.data;
+            // console.log(result);
             location.reload();
         }
         )
