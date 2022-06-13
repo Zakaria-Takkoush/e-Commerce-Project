@@ -24,9 +24,9 @@ class UserFavoriteController extends Controller
     // Get All User Favorites
     public function getFavorites($id) {
         // Retroeve all favorites where the ID passed is the user ID
-        $favs = Favorite::where("user_id", $id)->get();
-        // $favs = Favorite::join("items", "items.id","=","favorites.item_id")
-        // ->get(["favorites.*", "items.name as item_name", "items.price as item_price"]);
+        // $favs = Favorite::where("user_id", $id)->get();
+        $favs = Favorite::join("items", "items.id","=","favorites.item_id")
+        ->get(["favorites.*", "items.name as item_name", "items.price as item_price"]);
 
         return response()->json([
             "status" => "Success",
