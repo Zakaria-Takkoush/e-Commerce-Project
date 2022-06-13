@@ -53,7 +53,7 @@ axios({
                     <p>Price: ${price}</p>
                 </div>
                 <div class="like">
-                    <i onClick="addFav(${id})" class="fa-regular fa-heart"></i>
+                    <i onClick="addFav(${id},${i})" class="fa-regular fa-heart"></i>
                 </div>
             </div>
             `              
@@ -81,7 +81,10 @@ axios.post("http://127.0.0.1:8000/api/profile", {}, {
 
 // ----- Add an Item to favorites ----- //
 
-function addFav(item_id) {
+function addFav(item_id,index) {
+
+    document.getElementsByClassName("fa-heart")[index].classList.remove("fa-regular")
+    document.getElementsByClassName("fa-heart")[index].classList.add("fa-solid")
 
     stored_id = localStorage.getItem("id")
     
