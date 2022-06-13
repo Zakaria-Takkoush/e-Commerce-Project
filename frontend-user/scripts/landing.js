@@ -101,3 +101,10 @@ function addFav(item_id) {
     }
     )
 }
+
+
+// Navigate to Favorites Page
+
+document.getElementById('favs-nav').onclick = function () {
+    document.location = "favorites.html"
+}
