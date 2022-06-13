@@ -147,6 +147,10 @@ background-color: rgb(11, 11, 66);
     border: 2px solid rgb(11, 11, 66);
 }
 
+.select-cat {
+    padding: 10px;
+}
+
 .category:hover {
     cursor: pointer;
     background-color: white;
@@ -178,4 +182,29 @@ i {
 
 .item_category {
     width: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+    .fav-btn {
+        margin-right: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 25px;
+        width: 90%;
+    }
+
+    .categories {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .category {
+        width: fit-content;
+    }
+
+    .header > p {
+        font-size: 30px;
+    }
 }

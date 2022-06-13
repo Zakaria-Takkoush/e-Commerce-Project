@@ -37,7 +37,7 @@ axios({
                 <p>${name}</p>
             </div>
             <div class="item_price">
-                <p>${price}</p>
+                <p>Price: ${price}</p>
             </div>
             <div class="remove">
                 <button onClick="removeFav(${item_id})" >Remove</button>
