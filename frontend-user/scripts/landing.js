@@ -81,6 +81,22 @@ axios.post("http://127.0.0.1:8000/api/profile", {}, {
 
 // ----- Add an Item to favorites ----- //
 
-function addFav(user_id,item_id) {
-    data = new FormData 
+
+function addFav(item_id) {
+    
+    //Axios Function - Post
+
+    let data = new FormData();
+    data.append('user_id', stored_id);
+    data.append('item_id', item_id);
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/add_fav',
+        data: data,
+    })
+    .then(function (response) {
+        console.log(response.data);
+        location.reload();
+    }
+    )
 }
