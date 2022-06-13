@@ -50,10 +50,10 @@ axios({
                     <p>${name}</p>
                 </div>
                 <div class="item_price">
-                    <p>${price}</p>
+                    <p>Price: ${price}</p>
                 </div>
                 <div class="like">
-                    <i class="fa-regular fa-heart"></i>
+                    <i onClick="addFav(${id})" class="fa-regular fa-heart"></i>
                 </div>
             </div>
             `              
@@ -81,8 +81,9 @@ axios.post("http://127.0.0.1:8000/api/profile", {}, {
 
 // ----- Add an Item to favorites ----- //
 
-
 function addFav(item_id) {
+
+    stored_id = localStorage.getItem("id")
     
     //Axios Function - Post
 
@@ -96,7 +97,7 @@ function addFav(item_id) {
     })
     .then(function (response) {
         console.log(response.data);
-        location.reload();
+        alert("Item Added to Favorites")
     }
     )
 }

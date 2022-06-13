@@ -170,6 +170,9 @@ background-color: rgb(11, 11, 66);
     width: 30%;
 }
 
+i {
+    cursor: pointer;
+}
 
 /* Favorites Page */
 
