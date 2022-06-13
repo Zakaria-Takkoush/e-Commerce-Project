@@ -1,3 +1,9 @@
+// Navigate to Landing Page
+
+document.getElementById('back-nav').onclick = function () {
+    document.location = "landing.html"
+}
+
 let user_id = localStorage.getItem("id")
 
 // ----- Get All user favs ----- //
