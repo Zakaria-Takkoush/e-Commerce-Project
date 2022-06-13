@@ -26,6 +26,7 @@ axios({
 
     for (let i = 0; i < favs.length; i++) {
 
+        let item_id = favs[i].item_id
         let name = favs[i].item_name
         let price = favs[i].item_price
         // console.log(name + " " + price)
@@ -39,7 +40,7 @@ axios({
                 <p>${price}</p>
             </div>
             <div class="remove">
-                <button>Remove</button>
+                <button onClick="removeFav(${item_id})" >Remove</button>
             </div>
         </div>
         `
